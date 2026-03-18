@@ -366,7 +366,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &108756721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108756719}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1754c699ea9cf104485ff561ed80c898, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1403,7 +1403,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155811883}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 59fc88f28a0ea154fb4857653ca7de26, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2120,7 +2120,7 @@ Transform:
   m_GameObject: {fileID: 1503825413}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.87}
+  m_LocalPosition: {x: 0, y: 0, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2166,7 +2166,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540459310}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 59fc88f28a0ea154fb4857653ca7de26, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2503,7 +2503,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851641338}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 59fc88f28a0ea154fb4857653ca7de26, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2839,6 +2839,10 @@ PrefabInstance:
     - target: {fileID: 896984568646964346, guid: f883d92d7b15bc540bbe8f81d857a725, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151425569394903391, guid: f883d92d7b15bc540bbe8f81d857a725, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6541155616807923303, guid: f883d92d7b15bc540bbe8f81d857a725, type: 3}
       propertyPath: powerUp
