@@ -6,6 +6,7 @@ public class BallPhysics : MonoBehaviour
     public float speed = 10f;
     public float minYDirection = 0.3f;
     public GameObject powerUp;
+    public int scoreValue = 10;
 
     private Rigidbody rb;
 
@@ -43,11 +44,13 @@ public class BallPhysics : MonoBehaviour
     {
         if (other.gameObject.tag == "Or")
         {
-            if (Random.value < 0.5f)
+            if (Random.value < 0.2f)
             {
                 Instantiate(powerUp, transform.position, Quaternion.identity);
             }
-                
+            ScoreManager.instance.AddScore(scoreValue);
+            Debug.Log(scoreValue);
+            Object.FindFirstObjectByType<LevelManager>().BrickDestroyed();
             Destroy(other.gameObject);
         }
     }

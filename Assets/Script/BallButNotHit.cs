@@ -5,7 +5,7 @@ public class BallButNotHit : MonoBehaviour
     public float speed = 10f;
     public float minYDirection = 0.3f;
     public GameObject powerUp;
-
+    public int scoreValue = 10;
     private Rigidbody rb;
 
     void Start()
@@ -42,11 +42,12 @@ public class BallButNotHit : MonoBehaviour
     {
         if (other.gameObject.tag == "Or")
         {
-            if (Random.value < 0.5f)
+            if (Random.value < 0.2f)
             {
                 Instantiate(powerUp, transform.position, Quaternion.identity);
             }
-
+            ScoreManager.instance.AddScore(scoreValue);
+            Object.FindFirstObjectByType<LevelManager>().BrickDestroyed();
             Destroy(other.gameObject);
         }
     }
