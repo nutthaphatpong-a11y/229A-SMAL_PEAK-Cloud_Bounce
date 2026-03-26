@@ -243,6 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c23c556ea54e147903435dbfcc15c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 13
   minYDirection: 0.3
   powerUp: {fileID: 588581847375319501, guid: 044c0a442efaf244f88cfe369a5d0152, type: 3}
+  scoreValue: 10
