@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -18,34 +19,42 @@ public class LevelManager : MonoBehaviour
 
     public void GenerateLevel()
     {
-        brickCount = 0;
-        float offsetX = (cols - 1) * spacing / 2;
-        float offsetZ = (rows - 1) * spacing / 2;
-
-        for (int y = 0; y < rows; y++)
+        int score = ScoreManager.instance.score;
+        if (score < 1000)
         {
-            for (int x = 0; x < cols; x++)
+            brickCount = 0;
+            float offsetX = (cols - 1) * spacing / 2;
+            float offsetZ = (rows - 1) * spacing / 2;
+
+            for (int y = 0; y < rows; y++)
             {
-                // สุ่มว่าจะมี Brick หรือไม่
-                if (Random.value > 0.3f)
+                for (int x = 0; x < cols; x++)
                 {
-                    Vector3 pos = new Vector3(
-                    x * spacing - offsetX,
-                    0,
-                    y * spacing - offsetZ
-                );
+                    // สุ่มว่าจะมี Brick หรือไม่
+                    if (Random.value > 0.3f)
+                    {
+                        Vector3 pos = new Vector3(
+                            x * spacing - offsetX,
+                            0,
+                            y * spacing - offsetZ
+                        );
 
 
-                    GameObject brick = Instantiate(
-                        brickPrefabs[Random.Range(0, brickPrefabs.Length)],
-                        pos,
-                        Quaternion.identity,
-                        parent
-                    );
+                        GameObject brick = Instantiate(
+                            brickPrefabs[Random.Range(0, brickPrefabs.Length)],
+                            pos,
+                            Quaternion.identity,
+                            parent
+                        );
 
-                    brickCount++;
+                        brickCount++;
+                    }
                 }
             }
+        }
+        else if (score >= 1000)
+        {
+            SceneManager.LoadScene(2);
         }
     }
 
@@ -57,5 +66,10 @@ public class LevelManager : MonoBehaviour
         {
             GenerateLevel();
         }
+    }
+
+    public void GoToCredit()
+    {
+        
     }
 }
