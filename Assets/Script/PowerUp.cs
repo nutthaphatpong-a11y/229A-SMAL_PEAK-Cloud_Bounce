@@ -47,7 +47,7 @@ public class PowerUp : MonoBehaviour
 
         if (type == PowerType.ExpandPaddle && !IsExpandPaddle)
         {
-            other.transform.localScale += new Vector3(2, 0, 0);
+            other.transform.localScale += new Vector3(1, 0, 0);
             IsExpandPaddle = true;
         }
         PlaySound(PowerUpSouud);

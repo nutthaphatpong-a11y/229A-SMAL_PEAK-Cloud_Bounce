@@ -1,15 +1,15 @@
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
     public GameObject[] brickPrefabs;
     public Transform parent;
 
-    //public int rows = 5; //จำนวนแถว
-    //public int cols = 8; // จำนวนบล็อก
-    public float spacing = 1.2f; // itptsjk'its;jk'[]Hvd
-    public float startZ = 0f; // เริ่มในการสร้างบล็อก
+    public int rows;
+    public int cols;
+    public float spacing = 10f;
+
     public int brickCount;
 
     void Start()
@@ -19,39 +19,45 @@ public class LevelManager : MonoBehaviour
 
     public void GenerateLevel()
     {
-
-        int rows = Random.Range(5, 10 + 1);
-        int cols = Random.Range(5, 10 + 1);
-        
-        float offsetX = (cols - 1) * spacing / 2;
-        float offsetZ = (rows - 1) * spacing / 2;
-
-        brickCount = 0;
-
-
-        for (int x = 0; x < cols; x++)
+        int score = ScoreManager.instance.score;
+        if (score < 1000)
         {
+            brickCount = 0;
+            float offsetX = (cols - 1) * spacing / 2;
+            float offsetZ = (rows - 1) * spacing / 2;
+
             for (int y = 0; y < rows; y++)
             {
-                Vector3 pos = new Vector3(
-                    x * spacing - offsetX,
-                    0,
-                    startZ + y * spacing 
-                );
+                for (int x = 0; x < cols; x++)
+                {
+                    // สุ่มว่าจะมี Brick หรือไม่
+                    if (Random.value > 0.3f)
+                    {
+                        Vector3 pos = new Vector3(
+                            x * spacing - offsetX,
+                            0,
+                            y * spacing - offsetZ
+                        );
 
 
+                        GameObject brick = Instantiate(
+                            brickPrefabs[Random.Range(0, brickPrefabs.Length)],
+                            pos,
+                            Quaternion.identity,
+                            parent
+                        );
 
-                GameObject brick = Instantiate(
-                        brickPrefabs[Random.Range(0, brickPrefabs.Length)],
-                        pos,
-                        Quaternion.identity,
-                        parent
-                    );
-
-                    brickCount++;
+                        brickCount++;
+                    }
                 }
             }
         }
+        else if (score >= 100)
+        {
+            SceneManager.LoadScene(2);
+        }
+    }
+
     public void BrickDestroyed()
     {
         brickCount--;
@@ -61,7 +67,9 @@ public class LevelManager : MonoBehaviour
             GenerateLevel();
         }
     }
+
+    public void GoToCredit()
+    {
+        
+    }
 }
-
-
-

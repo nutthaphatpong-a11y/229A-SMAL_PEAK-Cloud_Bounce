@@ -1,12 +1,16 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
 
     public int score = 0;
-    public Text scoreText;
+    //public Text scoreText;
+
+    public TMP_Text scoreText;
 
     void Awake()
     {
@@ -17,5 +21,9 @@ public class ScoreManager : MonoBehaviour
     {
         score += amount;
         scoreText.text = "Score: " + score;
+	if (score >= 100)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 }

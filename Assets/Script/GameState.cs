@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameState : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
+            BallLifeText.instance.DecreaseLife(-1);
             hitCount++;
             ball.position = startPos;
             ball.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
@@ -25,6 +27,7 @@ public class GameState : MonoBehaviour
             {
                 Debug.Log("Game Over");
                 Time.timeScale = 0f;
+                SceneManager.LoadScene(3);
             }
         }
     }
