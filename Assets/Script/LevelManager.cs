@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
-        else if (score >= 100)
+        else if (score >= 1000)
         {
             SceneManager.LoadScene(2);
         }
